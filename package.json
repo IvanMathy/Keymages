@@ -4,7 +4,8 @@
   "description": "WIP",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "run": "tsc && node dist/generate.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,11 @@
   },
   "homepage": "https://github.com/IvanMathy/Keys#readme",
   "dependencies": {
+    "svg.js": "^2.7.1",
+    "svgdom": "^0.1.10",
     "typescript": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18"
   }
 }

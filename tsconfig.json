@@ -2,15 +2,10 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "es5",
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true
   },
-  "lib": [
-    "es2015"
-  ],
-  "files": [
-    "scripts/generate.ts"
-  ]
 }
