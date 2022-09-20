@@ -1,0 +1,22 @@
+{
+  "name": "keys",
+  "version": "1.0.0",
+  "description": "WIP",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://IvanMathy@github.com/IvanMathy/Keys.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanMathy/Keys/issues"
+  },
+  "homepage": "https://github.com/IvanMathy/Keys#readme",
+  "dependencies": {
+    "typescript": "^4.8.3"
+  }
+}
