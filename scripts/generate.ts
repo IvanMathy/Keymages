@@ -73,15 +73,13 @@ function generateGlyph(glyph: Glyph, sizeTemplate: Size, scheme: Scheme, config:
 
   const dir = `${config.name}/${scheme.name}/${sizeTemplate.name}`
   const fullDir = `out/${dir}`
-  const path = `glyph_${glyph?.config?.name ?? glyph.glyph}.svg`
-
   if (!fs.existsSync(fullDir)) {
     fs.mkdirSync(fullDir, { recursive: true })
   }
 
-  files.push(`![${glyph.path}](./${dir}/${path})`)
+  files.push(`![${glyph.path}](./${dir}/${glyph.path})`)
 
-  fs.writeFileSync(`${fullDir}/${path}`, canvas.svg());
+  fs.writeFileSync(`${fullDir}/${glyph.path}`, canvas.svg());
 
   canvas.clear()
 }

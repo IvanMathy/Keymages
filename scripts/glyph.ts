@@ -20,7 +20,7 @@ export default class Glyph {
   }
 
   public get path() {
-    return `glyph_${this.config?.name ?? this.glyph}.svg`;
+    return `${this.config?.name ?? this.glyph}.svg`;
   }
 
 }
