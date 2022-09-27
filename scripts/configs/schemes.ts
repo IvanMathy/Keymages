@@ -1,3 +1,5 @@
+import Glyph from "../glyph";
+
 type Color = `#${string}`;
 export interface Scheme {
   name: string,

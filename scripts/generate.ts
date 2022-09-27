@@ -4,12 +4,15 @@ import fs from 'fs'
 import TextToSVG from 'text-to-svg'
 
 import { macConfig } from './configs/mac'
+import { windowsConfig } from './configs/windows'
 import { latinGlyphs } from './glyphs/latin'
 import Glyph from './glyph'
-import { Config } from './config'
 import schemes, { Scheme } from './configs/schemes'
+import { Config } from './config'
 
-const textToSVG = TextToSVG.loadSync(`${__dirname}/../fonts/${macConfig.font}`);
+
+const fonts: Record<string, unknown> = {}
+
 const root = `${__dirname}/../out/`
 const window = createSVGWindow()
 
@@ -37,7 +40,16 @@ const borderWidth = 1;
 
 const files: string[] = []
 
-function generateGlyph(glyph: Glyph, sizeTemplate: Size, scheme: Scheme) {
+function getFont(name: string) {
+  if (name in fonts) {
+    return fonts[name]
+  }
+  const textToSVG = TextToSVG.loadSync(`${__dirname}/../fonts/${name}`);
+  fonts[name] = textToSVG
+  return textToSVG
+}
+
+function generateGlyph(glyph: Glyph, sizeTemplate: Size, scheme: Scheme, config: Config) {
   const size = sizeTemplate.size
   const width = size * (glyph.config?.width || 1)
 
@@ -49,15 +61,17 @@ function generateGlyph(glyph: Glyph, sizeTemplate: Size, scheme: Scheme) {
     .stroke({ color: scheme.borderColor, opacity: 1, width: borderWidth })
 
   const attributes = { fill: 'red', stroke: 'white' };
-  const offset = (glyph.config?.offset || 0) * size / 10
+  const offset = (glyph.config?.offset || config?.offset || 0) * size / 10
   const fontSize = size * 0.7 * (glyph.config?.size || 1)
   const options = { x: width / 2, y: size / 2 + offset, fontSize: fontSize, anchor: 'center middle', attributes: attributes };
 
-  const svg = textToSVG.getD(glyph.glyph, options);
+  const font = getFont(glyph.config?.font || config.font)
+
+  const svg = font.getD(glyph.glyph, options);
 
   canvas.path(svg).fill(scheme.textColor)
 
-  const dir = `${scheme.name}/${sizeTemplate.name}`
+  const dir = `${config.name}/${scheme.name}/${sizeTemplate.name}`
   const fullDir = `out/${dir}`
   const path = `glyph_${glyph?.config?.name ?? glyph.glyph}.svg`
 
@@ -72,11 +86,14 @@ function generateGlyph(glyph: Glyph, sizeTemplate: Size, scheme: Scheme) {
   canvas.clear()
 }
 
-schemes.forEach(scheme => {
-  files.push(`# ${scheme.name}`)
-  sizes.forEach(size => {
-    files.push(`## ${size.name}`)
-    latinGlyphs.map(g => generateGlyph(g, size, scheme))
+[macConfig, windowsConfig].forEach(config => {
+  files.push(`## ${config.name}`)
+  schemes.forEach(scheme => {
+    files.push(`## ${scheme.name}`)
+    sizes.forEach(size => {
+      files.push(`### ${size.name}`)
+      config.glyphs.map(g => generateGlyph(g, size, scheme, config))
+    })
   })
 })
 

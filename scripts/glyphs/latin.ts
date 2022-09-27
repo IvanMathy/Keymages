@@ -5,9 +5,12 @@ const smallSize = 0.5
 export const latinGlyphs = [
   ...Glyph.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
   ...Glyph.from('0123456789'),
+]
 
-  ...Array.from(Array(20)).map((_, i) => {
-    return new Glyph('F' + i, { size: 0.6, width: 1.3 })
+export const macGlyphs = [
+
+  ...Array.from(Array(19)).map((_, i) => {
+    return new Glyph('F' + (i + 1), { size: 0.6, width: 1.3 })
   }),
 
   new Glyph('cmd', { name: "cmdtext", size: smallSize, width: 1.1, offset: 1 }),
@@ -42,4 +45,23 @@ export const latinGlyphs = [
   new Glyph('◀', { name: "left" }),
   new Glyph('', { name: "apple" }),
   new Glyph('􀆪', { name: "globe" }),
+]
+
+export const windowsGlyphs = [
+  ...Array.from(Array(12)).map((_, i) => {
+    return new Glyph('F' + (i + 1), { size: 0.6, width: 1.3 })
+  }),
+
+  new Glyph('w', { name: "windows", font: "KeysExtras-Regular.otf", width: 1.1 }),
+  new Glyph('Esc', { size: smallSize }),
+  new Glyph('Tab', { size: smallSize }),
+  new Glyph('Del', { size: smallSize }),
+  new Glyph('Caps', { size: smallSize, width: 1.3 }),
+  new Glyph('Shift', { size: smallSize, width: 1.4 }),
+  new Glyph('Enter', { size: smallSize, width: 1.6 }),
+  new Glyph('Backspace', { size: smallSize, width: 2.2 }),
+  new Glyph('Ctrl', { size: smallSize }),
+  new Glyph('Alt', { size: smallSize }),
+  new Glyph('Fn', { size: smallSize }),
+
 ]

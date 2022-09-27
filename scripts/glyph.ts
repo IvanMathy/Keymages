@@ -3,6 +3,7 @@ export interface GlyphConfig {
   size?: number
   width?: number
   offset?: number
+  font?: string
 }
 
 export default class Glyph {
