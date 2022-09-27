@@ -11,12 +11,12 @@ The Windows design is based on the Surface 3 keyboard. However, the typeface is 
 Only a subset of keys are supported, feel free to open a PR or an issue to request/add more.
 
 
-## ![Apple](./out/mac/dark/large/Apple.svg)  
+## ![Apple](./out/mac/dark/large/apple.svg)  
 
 The Mac design is a mix of the latest MacBook Pro, and the legacy Apple USB Keyboard. It has support for standard shortcut icons.
 
-![A](./out/mac/dark/medium/A.svg) ![B](./out/mac/dark/medium/B.svg) ![Q](./out/mac/dark/medium/Q.svg)  ![B](./out/mac/dark/medium/command-glyph.svg) ![B](./out/mac/dark/medium/Shift-glyph.svg)![B](./out/mac/dark/medium/Option-glyph.svg)
+![A](./out/mac/dark/medium/A.svg) ![B](./out/mac/dark/medium/B.svg) ![Q](./out/mac/dark/medium/Q.svg)  ![B](./out/mac/dark/medium/command-glyph.svg) ![B](./out/mac/dark/medium/shift-glyph.svg)![B](./out/mac/dark/medium/option-glyph.svg)
 
 It also has alternative, text-based versions of the same shortcuts.
 
-![B](./out/mac/dark/medium/command.svg) ![B](./out/mac/dark/medium/Shift.svg) ![B](./out/mac/dark/medium/Option.svg)
+![B](./out/mac/dark/medium/command.svg) ![B](./out/mac/dark/medium/shift.svg) ![B](./out/mac/dark/medium/option.svg)
